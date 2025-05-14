@@ -1,0 +1,312 @@
+/* WishCard.css */
+.wish-card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.wish-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 1.5s ease-in-out;
+}
+
+.card-front,
+.card-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-front {
+  background-image: url("../assets/image/wishcard1.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transform-origin: center left;
+  z-index: 1;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.card-front::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%
+  );
+  animation: shimmer 6s linear infinite;
+}
+
+.card-inside {
+  background-image: url("../assets/image/wishcard2.png");
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotateY(180deg);
+  transform-origin: center left;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-decoration {
+  width: 100%;
+  height: 30px;
+  background-image: radial-gradient(
+      circle at 2px 2px,
+      #ff758c 2px,
+      transparent 0
+    ),
+    radial-gradient(circle at 2px 2px, #ff7eb3 2px, transparent 0);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.3;
+}
+
+.card-decoration.top {
+  margin-bottom: 20px;
+}
+
+.card-decoration.bottom {
+  margin-top: 20px;
+  transform: rotate(180deg);
+}
+
+.wish-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+    /* Smooth easing */ opacity 1.2s ease-in-out;
+}
+
+.card-front,
+.card-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth easing */
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.wish-card.open .card-front {
+  transform: rotateY(-180deg); /* Smooth flip */
+}
+
+.wish-card.open .card-inside {
+  transform: rotateY(0); /* Smooth flip */
+}
+.heart-icon {
+  position: relative;
+  transform: scale(2.5);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  animation: heartbeat 1.5s infinite;
+  z-index: 2;
+}
+
+.star-icon {
+  position: relative;
+  animation: twinkle 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+.star-icon.top {
+  align-self: flex-start;
+  margin-left: 40px;
+}
+
+.star-icon.bottom {
+  align-self: flex-end;
+  margin-right: 40px;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(2.5);
+  }
+  14% {
+    transform: scale(2.3);
+  }
+  28% {
+    transform: scale(2.5);
+  }
+  42% {
+    transform: scale(2.3);
+  }
+  70% {
+    transform: scale(2.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.wish-title {
+  color: #ff4d6d;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Playfair Display", serif;
+  position: relative;
+}
+
+.wish-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff4d6d, transparent);
+}
+
+.wish-message {
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: center;
+  font-family: "Lora", serif;
+  margin-bottom: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .wish-card {
+    width: 500px;
+    height: 600px;
+  }
+
+  .wish-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .wish-message {
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+}
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: radial-gradient(circle, #ff758c 5px, transparent 0),
+    radial-gradient(circle, #ff7eb3 5px, transparent 0),
+    radial-gradient(circle, #ff8fab 5px, transparent 0),
+    radial-gradient(circle, #f6b93b 5px, transparent 0),
+    radial-gradient(circle, #6ab04c 5px, transparent 0),
+    radial-gradient(circle, #22a6b3 5px, transparent 0);
+  background-size: 40px 40px; /* Increase size to reduce density */
+  background-position: 0% -10%, 20% -40%, 45% -50%, 60% -30%, 75% -70%;
+  animation: confettiRain 6s linear infinite; /* Slower animation */
+}
+
+.balloons {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.balloon {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background: radial-gradient(circle, #ff758c, #ff7eb3);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: floatUp 8s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: #fff;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Keyframes for Confetti */
+@keyframes confettiRain {
+  0% {
+    background-position: 0% -10%, 20% -40%, 45% -50%, 60% -30%, 75% -70%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 110%, 20% 140%, 45% 150%, 60% 130%, 75% 170%;
+    opacity: 0;
+  }
+}
+
+/* Keyframes for Balloons */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}

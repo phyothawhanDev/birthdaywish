@@ -1,0 +1,132 @@
+.cake-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(
+    50px
+  ); /* Slightly larger initial offset for smoother effect */
+  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth easing */
+}
+
+.cake-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cake {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+.plate {
+  position: absolute;
+  width: 270px;
+  height: 30px;
+  bottom: -10px;
+  left: -10px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cake-bottom {
+  position: absolute;
+  width: 250px;
+  height: 70px;
+  bottom: 0;
+  background-color: #f8c291;
+  border-radius: 10px 10px 50px 50px;
+  box-shadow: 0 4px 0 #e55039;
+}
+
+.cake-middle {
+  position: absolute;
+  width: 220px;
+  height: 60px;
+  bottom: 70px;
+  left: 15px;
+  background-color: #f6b93b;
+  border-radius: 10px 10px 5px 5px;
+  box-shadow: 0 4px 0 #e58e26;
+}
+
+.cake-top {
+  position: absolute;
+  width: 180px;
+  height: 40px;
+  bottom: 130px;
+  left: 35px;
+  background-color: #eb4d4b;
+  border-radius: 10px 10px 5px 5px;
+  box-shadow: 0 4px 0 #b83227;
+}
+
+.candle {
+  position: absolute;
+  width: 20px;
+  height: 50px;
+  bottom: 170px;
+  left: 115px;
+  background: linear-gradient(to right, #badc58, #6ab04c);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.candle:hover {
+  transform: scale(1.1);
+}
+
+.flame {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  bottom: 50px;
+  left: 0;
+  background: linear-gradient(to bottom, #ff9f43, #ee5253);
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker 1s infinite alternate;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px #f39c12) drop-shadow(0 0 20px #f1c40f);
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1) translateY(-2px);
+    opacity: 0.8;
+  }
+}
+
+/* Add fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cake-container .message {
+  font-size: 14px; /* Adjust font size */
+  color: #ffffff; /* Optional: Ensure readability */
+  animation: fade-in 1.5s ease-in; /* Apply fade-in effect */
+  opacity: 1; /* Ensure visibility after animation */
+  text-align: center; /* Optional: Center-align text */
+  margin-top: 10px; /* Optional: Add spacing */
+  font-family: "Arial", sans-serif; /* Optional: Change font family */
+  font-weight: bold; /* Optional: Make text bold */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: Add text shadow */
+  padding: 10px; /* Optional: Add padding */
+}
